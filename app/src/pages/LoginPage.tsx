@@ -1,5 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { useAppDispatch } from '@/redux/hooks';
+import { setUser } from '@/redux/slices/authSlice';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
@@ -8,11 +10,14 @@ const LoginPage = () => {
   const [password, setPassword] = useState<string>('');
 
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    navigate('/');
 
+    dispatch(setUser({ email, password }));
+
+    navigate('/');
     setEmail('');
     setPassword('');
   };
