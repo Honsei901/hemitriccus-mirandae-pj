@@ -14,6 +14,7 @@ export const fetchTopHeadlineNews = async () => {
         import.meta.env.VITE_API_KEY
       }`
     );
+    console.log(data.articles);
     return data.articles;
   } catch (error) {
     throw new Error(error as string);

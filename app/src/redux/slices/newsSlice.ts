@@ -37,6 +37,7 @@ const newsSlice = createSlice({
       .addCase(
         fetchTopHeadlineNewsData.fulfilled,
         (state, action: PayloadAction<Article[]>) => {
+          state.loading = false;
           state.newsList = action.payload;
         }
       )
